@@ -9,12 +9,16 @@ const io = new Server(server, {
   },
 });
 
-// const onlineUser = {};
+const onlineUser = {};
 
-// io.use((socket, next) => {});
+io.use((socket, next) => {
+  const userId = socket.handshake.auth.id;
+  onlineUser[userId] = socket.id;
+  next();
+});
 
 io.on("connection", (socket) => {
-  console.log(socket);
+  console.log(onlineUser);
   socket.on("message", (msg) => {
     console.log(msg);
     io.emit("recieved", msg);
