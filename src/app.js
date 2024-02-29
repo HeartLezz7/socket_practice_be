@@ -8,8 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("", (req, res) => {
-  console.log("test socket");
-  res.json({ mesage: "test01" });
+  res.json({ mesage: "test socket server" });
 });
 
 module.exports = server;

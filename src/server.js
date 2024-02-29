@@ -18,9 +18,8 @@ io.use((socket, next) => {
 });
 
 io.on("connection", (socket) => {
-  console.log(onlineUser);
+  console.log("chat server online");
   socket.on("message", (msg) => {
-    console.log(msg);
     io.emit("recieved", msg);
   });
   socket.on("disconnect", () => {
